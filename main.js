@@ -45,8 +45,9 @@ for (let i = 0; i < 3; i++) {
 }
 
 //点击事件
-if (!winflag) {
-    $("#canvas").click(function (event) {
+
+$("canvas").click(function (event) {
+    if (!winflag) {
         console.log("可点击")
         //落子
         if (19 < event.offsetX && event.offsetX < 381) {
@@ -110,93 +111,23 @@ if (!winflag) {
 
                         ctx.fillStyle = "snow";
                         ctx.fillText("白子获胜,white win!", 200, 420);
-
+                        winflag = true; console.log("winflag:" + winflag)
 
                     }
                     else if (chessA == "黑黑黑黑黑" || chessB == "黑黑黑黑黑") {
 
                         ctx.fillStyle = "#222";
                         ctx.fillText("黑子获胜,black win!", 200, 420);
-
+                        winflag = true; console.log("winflag:" + winflag)
                     }
                     chessA = "";
                     chessB = "";
                 }
 
             }
-            winflag = true; console.log("winflag:" + winflag)
+
         }
-        //旧版游戏获胜逻辑
-        // if (matrix[mtxPosX - 4][mtxPosY]) {
-        //     if (matrix[mtxPosX-4][mtxPosY] +matrix[mtxPosX - 3][mtxPosY] +matrix[mtxPosX - 2][mtxPosY] +matrix[mtxPosX - 1][mtxPosY]+matrix[mtxPosX][mtxPosY]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX - 3][mtxPosY] - matrix[mtxPosX - 2][mtxPosY] - matrix[mtxPosX - 1][mtxPosY])) {
-        //             winflag = 1; console.log("右")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosX < 15 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX + 4][mtxPosY]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX + 3][mtxPosY] * matrix[mtxPosX + 2][mtxPosY] * matrix[mtxPosX + 1][mtxPosY]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX + 3][mtxPosY] - matrix[mtxPosX + 2][mtxPosY] - matrix[mtxPosX + 1][mtxPosY])) {
-        //             winflag = 1; console.log("左")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosY > 3 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX][mtxPosY - 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX][mtxPosY - 3] * matrix[mtxPosX][mtxPosY - 2] * matrix[mtxPosX][mtxPosY - 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX][mtxPosY - 3] - matrix[mtxPosX][mtxPosY - 2] - matrix[mtxPosX][mtxPosY - 1])) {
-        //             winflag = 1; console.log("下")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosY < 15 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX][mtxPosY + 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX][mtxPosY + 3] * matrix[mtxPosX][mtxPosY + 2] * matrix[mtxPosX][mtxPosY + 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX][mtxPosY + 3] - matrix[mtxPosX][mtxPosY + 2] - matrix[mtxPosX][mtxPosY + 1])) {
-        //             winflag = 1; console.log("上")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosX < 15 && mtxPosY < 15 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX + 4][mtxPosY + 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX + 3][mtxPosY + 3] * matrix[mtxPosX + 2][mtxPosY + 2] * matrix[mtxPosX + 1][mtxPosY + 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX + 3][mtxPosY + 3] - matrix[mtxPosX + 2][mtxPosY + 2] - matrix[mtxPosX + 1][mtxPosY + 1])) {
-        //             winflag = 1; console.log("左上")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosX > 3 && mtxPosY > 3 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX - 4][mtxPosY - 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX - 3][mtxPosY - 3] * matrix[mtxPosX - 2][mtxPosY - 2] * matrix[mtxPosX - 1][mtxPosY - 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX - 3][mtxPosY - 3] - matrix[mtxPosX - 2][mtxPosY - 2] - matrix[mtxPosX - 1][mtxPosY - 1])) {
-        //             winflag = 1; console.log("右下")
-        //         }
-        //     }
+        
+    };
+})
 
-        // }
-        // else if (mtxPosX < 15 && mtxPosY > 3 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX + 4][mtxPosY - 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX + 3][mtxPosY - 3] * matrix[mtxPosX + 2][mtxPosY - 2] * matrix[mtxPosX + 1][mtxPosY - 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX + 3][mtxPosY - 3] - matrix[mtxPosX + 2][mtxPosY - 2] - matrix[mtxPosX + 1][mtxPosY - 1])) {
-        //             winflag = 1; console.log("右上")
-        //         }
-        //     }
-        // }
-        // else if (mtxPosX > 3 && mtxPosY < 15 && matrix[mtxPosX][mtxPosY] == matrix[mtxPosX - 4][mtxPosY + 4]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX - 3][mtxPosY + 3] * matrix[mtxPosX - 2][mtxPosY + 2] * matrix[mtxPosX - 1][mtxPosY + 1]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX - 3][mtxPosY + 3] - matrix[mtxPosX - 2][mtxPosY + 2] - matrix[mtxPosX - 1][mtxPosY + 1])) {
-        //             winflag = 1; console.log("左下");
-        //         }
-        //     }
-        // };
-        // if (matrix[mtxPosX][mtxPosY] == matrix[mtxPosX - 4][mtxPosY]) {
-        //     if (matrix[mtxPosX][mtxPosY] * matrix[mtxPosX - 3][mtxPosY] * matrix[mtxPosX - 2][mtxPosY] * matrix[mtxPosX - 1][mtxPosY]) {
-        //         if (!(3 * matrix[mtxPosX][mtxPosY] - matrix[mtxPosX - 3][mtxPosY] - matrix[mtxPosX - 2][mtxPosY] - matrix[mtxPosX - 1][mtxPosY])) {
-        //             winflag = 1; console.log("右")
-        //         }
-        //     }
-        // }
-        //新版获胜逻辑
-
-    })
-
-};
-if (winflag == 1) {
-    console.log("不可点击");
-    $("#canvas").click(function () { location.reload() })
-};
